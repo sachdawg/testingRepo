@@ -1,11 +1,22 @@
-'''Autonomous Agent Movement: Paths and Wandering
+'''Autonomous Agent Movement: Seek, Arrive and Flee
 
-Created for COS30002 AI for Games by Clinton Woodward <cwoodward@swin.edu.au>
+Created for COS30002 AI for Games, Lab,
+by Clinton Woodward <cwoodward@swin.edu.au>
 
-For class use only. Do not publically share or post this code without permission.
+For class use only. Do not publically share or post this code without
+permission.
 
-This code is essentially the same as the base for the previous steering lab
-but with additional code to support this lab.
+Notes:
+* The graphics.py module provides a simple wrapper around pyglet to make
+  things easier - hence Easy Graphics Interface (egi).
+
+* If you want to respond to a key press, see the on_key_press function.
+* The world contains the agents. In the main loop we tell the world
+  to update() and then render(), which then tells each of the agents
+  it has.
+
+Updated 
+ - 2019-03-17
 
 '''
 from graphics import egi, KEY
@@ -30,15 +41,6 @@ def on_key_press(symbol, modifiers):
             agent.mode = AGENT_MODES[symbol]
     elif symbol == KEY.A: #chose to use A for Add Agent :D
         world.agents.append(Agent(world))
-    elif symbol == KEY.R:
-        for agent in world.agents:
-            agent.randomise_path()
-
-    # Toggle debug force line info on the agent
-    elif symbol == KEY.I:
-        for agent in world.agents:
-            agent.show_info = not agent.show_info
-
 
 
 def on_resize(cx, cy):
